@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>EUREKA | Front-end Testing</title>
+	<link rel="icon" href="img/favicon.ico" type="image/x-icon"/>
+	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon"/>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<script src="js/jquery.js"></script>
+</head>
+<body>
+	<style>
+		ul,li {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+		header {
+			height: 80px;
+			background: #2d4452;
+			color: #fff;
+			-webkit-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.75);
+			-moz-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.75);
+			box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.75);
+		}
+		header .title {
+			font-size: 40px;
+			padding-top: 15px;
+		}
+		header .nav-area ul li {
+			float: right;
+			position: relative;
+		}
+		header .nav-area ul li a {
+			font-size: 18px;
+			display: block;
+			padding: 27px 30px;
+		}
+		header .nav-area ul li a:hover {
+			background: #2a3f4d;
+			color: #6fae08;
+			text-decoration: none;
+		}
+		.dropdown {
+			position: absolute;
+			width: 250px;
+			height: 162px;
+			background: rgba(0, 0, 0, .5);
+			display: none;
+			z-index: 3;
+		}
+		header .nav-area .dropdown li {
+			width: 100%;
+			border-bottom: 2px solid #5b6a73;
+		}
+		header .nav-area .dropdown li a{
+			/*display: inline-block;*/
+			text-align: left;
+			color: #fff;
+		}
+		header .burger {
+			padding: 5px;
+			border-radius: 5px;
+			border: 1px solid #fff;
+			color: #fff;
+			text-align: center;
+			font-size: 20px;
+			margin-top: 20px;
+			margin-right: -1px;
+			cursor: pointer;
+		}
+		.triger01:hover .dropdown {
+			display: block;
+		}
+		.content-area {
+			background: #f2f2f2;
+			color: #000000;
+		}
+		.content-area h1 {
+			font-size: 54px;
+			padding-top: 0;
+			margin-top: 0;
+			padding-bottom: 30px;
+			margin-bottom: 0;
+		}
+		.content-area .main-area{
+			padding-top: 75px;
+			padding-bottom: 75px;
+		}
+		.content-area .title-desk {
+			font-size: 22px;
+			padding-bottom: 30px;
+			padding-top: 0;
+			margin-bottom: 0;
+		}
+		.content-area button {
+			font-size: 20px;
+			color: #e7e7e7;
+			padding: 25px 40px;
+			background: #2d4452;
+			border-radius: 20px;
+			border: 1px solid #2d4452;
+			outline: none;
+			box-shadow: none;
+			transition: .2s;
+		}
+		.content-area button:hover {
+			background: transparent;
+			color: #2d4452;
+		}
+		.content-area .img01 {
+			float: right;
+		}
+		.content-area .bg-white {
+			background: #fff;
+			padding-bottom: 145px;
+		}
+		.content-area h2 {
+			text-align: center;
+			font-size: 54px;
+			color: #000;
+			padding-bottom: 110px;
+		}
+		.content-area .bg-white img {
+			margin: 0 auto;
+		}
+		.content-area .bg-white .title-part2a,
+		.content-area .bg-white .title-part2 {
+			font-size: 26px;
+			text-align: center;
+			color: #000;
+			padding-top: 30px;
+			padding-bottom: 15px;
+			font-weight: 700;
+		}
+		.content-area .bg-white .title-part2a {
+			padding-top: 15px;
+		}
+		.content-area .bg-white .desc-part2 {
+			font-size: 15px;
+			text-align: center;
+
+		}
+		.content-area .mail-area {
+			padding-top: 85px;
+			padding-bottom: 95px; 
+		}
+		.content-area .mail-area h2 {
+			font-size: 46px;
+			text-align: center;
+			padding-bottom: 50px;
+			margin: 0;
+		}
+		.content-area .mail-area input {
+			padding: 20px;
+			border-radius: 5px;
+			font-size: 26px;
+			width: 100%;
+			border: 0;
+		}
+		.content-area .mail-area input:focus {
+			outline: none;
+		}
+		.content-area .mail-area input[type=email] {
+			background: #fff;
+		}
+		.content-area .mail-area input[type=submit] {
+			background: #2d4452;
+			color: #fff;
+			font-weight: 600;
+			text-align: center;
+			border: 1px solid #2d4452;
+			transition: .2s;
+		}
+		.content-area .mail-area input[type=submit]:hover {
+			border: 1px solid #2d4452;
+			background: #fff;
+			color: #2d4452;
+		}
+		::-webkit-input-placeholder {
+			color: #a3a3a3;
+		}
+		footer {
+			background: #2d4452;
+			padding-top: 40px;
+			padding-bottom: 30px;
+			color: #fff;
+		}
+		footer .footer-title {
+			text-align: left;
+			font-size: 40px;
+			padding-bottom: 20px;
+			margin: 0;
+		}
+		footer .title-desc {
+			font-size: 15px;
+			margin: 0;
+		}
+		footer .sosmed-footer,
+		footer .nav-footer {
+			padding-bottom: 45px;
+		}
+		footer .sosmed-footer {
+			padding-bottom: 35px;
+		}
+		footer .sosmed-footer li,
+		footer .nav-footer li {
+			float: right;
+			font-size: 18px;
+		}
+		footer .nav-footer li a {
+			color: #fff;
+			padding-left: 40px;
+		}
+		footer .nav-footer li a:hover {
+			text-decoration: none;
+		}
+		footer .sosmed-footer li a {
+			padding-left: 20px;
+		}
+		footer .footer-text {
+			font-size: 15px;
+			text-align: right;
+			padding: 0;
+			margin: 0;
+		}
+		.dropdown-res {
+			margin-top: 20px;
+			display: none;
+		}
+		.dropdown-res li a {
+			background: #fff;
+			color: #2d4452;
+			padding: 5px 15px;
+			text-align: left;
+			width: 100%;
+			display: block;
+			border-bottom: 1px solid #2d4452;
+		}
+		@media only screen and (max-width: 500px) {
+		    header .title {
+		    	font-size: 32px;
+		    }
+		    .content-area .main-area {
+		    	padding-top: 25px;
+		    	padding-bottom: 25px;
+		    	padding-left: 25px;
+		    	padding-right: 25px;
+		    }
+		    .content-area h1 {
+		    	font-size: 24px;
+		    }
+		    .content-area .title-desk {
+		    	font-size: 11px;
+		    }
+		    .content-area h2 {
+		    	font-size: 18px;
+	    	    padding-bottom: 30px;
+		    }
+		    .content-area .bg-white {
+		    	padding-bottom: 45px;
+		    }
+		    .content-area .bg-white .title-part2a, 
+		    .content-area .bg-white .title-part2 {
+		    	font-size: 13px;
+		    }
+		    .content-area .bg-white .desc-part2 {
+		    	font-size: 11px;
+		    }
+		    .content-area .bg-white img {
+	    	    margin-top: 40px;
+		    }
+		    .content-area .mail-area {
+		    	padding-top: 25px;
+		    	padding-bottom: 30px;
+		    }
+		    .content-area .mail-area h2 {
+		    	font-size: 15px;
+		    	padding-bottom: 20px;
+		    }
+		    .content-area .mail-area input {
+		    	padding: 10px;
+		    	font-size: 13px;
+		    	margin-bottom: 10px;
+		    }
+		    footer .title-desc {
+		    	font-size: 11px;
+		    }
+		    footer .sosmed-footer {
+		    	padding-top: 20px;
+		    }
+		}
+	</style>
+	<header class="container-fluid">
+		<div class="container">
+			<div class="col-md-6 col-xs-10">
+				<div class="row">
+					<div class="title">Front-End</div>
+				</div>
+			</div>
+			<div class="col-md-6 nav-area hidden-xs">
+				<ul class="row">
+					<li><a href=""><img src="img/icon-search.png" alt=""></a></li>
+					<li><a href="">Menu 4</a></li>
+					<li>
+						<a href="" class="triger01">Menu 3</a>
+						<ul class="dropdown">
+							<li><a href="">Sub-menu-3-number 1</a></li>
+							<li><a href="">Sub-menu-3-2</a></li>
+						</ul>
+					</li>
+					<li><a href="">Menu 2</a></li>
+					<li><a href="">Menu 1</a></li>
+				</ul>
+			</div>
+			<div class="col-xs-2 nav-area hidden-sm hidden-md hidden-lg">
+				<ul class="row">
+					<div class="burger">
+						<i class="fa fa-list" aria-hidden="true"></i>
+					</div>
+				</ul>
+			</div>
+			<ul class="dropdown-res col-xs-12 hidden-lg hidden-md">						
+				<li class="row"><a href="">Menu 1</a></li>
+				<li class="row"><a href="">Menu 2</a></li>
+				<li class="row"><a href="">Menu 3</a></li>
+				<li class="row"><a href="">Menu 4</a></li>
+			</ul>
+		</div>
+	</header>
+	<div class="container-fluid content-area">
+		<div class="row">
+			<div class="container main-area">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="row">
+							<h1>
+								Lorem ipsum dolor sit <br>
+								amet, consectetur adipi <br>
+								scingelit, sed do 
+							</h1>
+							<p class="title-desk">
+								eiusmod tempor incididunt ut labore et dolore magna
+ 								<br>aliqua. Ut enim ad minim veniam, quis nostrud
+							</p>
+							<button>For more information</button>
+						</div>
+					</div>
+					<div class="col-md-6 hidden-xs">
+						<div class="row">
+							<img src="img/section-1-image01.png" class="img01 ing-responsive" alt="">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row bg-white">
+			<div class="container main-area">
+				<div class="row">
+					<h2>
+						Cupidatat Non Proident Sunt
+					</h2>
+				</div>
+				<div class="row">
+					<div class="col-md-4">
+						<div class="row">
+							<img class="img-responsive" src="img/section-2-image01.png" alt="">
+						</div>
+						<div class="row">
+							<div class="title-part2 col-md-12">
+								Excepteur sint occaecat
+							</div>
+							<div class="desc-part2 col-md-12">
+								laboris nisi ut aliquip ex ea commodo consequat. <br>	
+								irure dolor in reprehenderit in voluptate <br>	
+								dolore eu fugiat nulla pariatur.
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="row">
+							<img class="img-responsive" src="img/section-2-image02.png" alt="">
+						</div>
+						<div class="row">
+							<div class="title-part2a col-md-12">
+								Nemo enim ipsam
+							</div>
+							<div class="desc-part2 col-md-12">
+								qui ratione voluptatem sequi nesciunt.Neque porro <br>	
+								quisquam est, qui dolorem ipsum quia dolor <br>	
+								sit amet, consectetur, adipisci velit,
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="row">
+							<img class="img-responsive" src="img/section-2-image03.png" alt="">
+						</div>
+						<div class="row">
+							<div class="title-part2 col-md-12">
+								 Quis autem vel eum
+							</div>
+							<div class="desc-part2 col-md-12">
+								magnam aliquam quaerat voluptatem. Ut enim <br>	
+								ad minima veniam, quis nostrum exercitationem <br>	
+								ullam corporis
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="container mail-area">
+				<div class="row">
+					<h2>
+						Quis nostrum exercitationem ullam corporis <br> 
+						suscipit laboriosasimu, nisi ut aliquid?
+					</h2>
+				</div>
+				<div class="row">
+					<div class="col-md-2"></div>
+					<div class="col-md-8">
+						<div class="row">
+							<div class="col-md-8">
+								<input type="email" placeholder="front-end@tunaiku.com">
+							</div>
+							<div class="col-md-4">
+								<input type="submit" value="SEND">
+							</div>
+						</div>
+					</div>
+					<div class="col-md-2"></div>
+				</div>
+				
+			</div>
+		</div>
+	</div>	
+	<footer class="container-fluid">
+		<div class="row">
+			<div class="container">
+				<div class="col-md-12">
+					<div class="col-md-6">
+						<div class="row">
+							<p class="footer-title">Front-end</p>
+							<p class="title-desc">
+								magnam aliquam quaerat voluptatem. Ut enim <br> 
+								ad minima veniam, quis nostrum exercitationem <br>
+								ullam corporis
+							</p>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+							<ul class="nav-footer hidden-xs col-md-12">
+								<li><a href="">Menu 4</a></li>
+								<li><a href="">Menu 3</a></li>
+								<li><a href="">Menu 2</a></li>
+								<li><a href="">Menu 1</a></li>
+							</ul>
+							<ul class="sosmed-footer col-md-12">
+								<li><a href=""><img src="img/icon-youtube.png" alt=""></a></li>
+								<li><a href=""><img src="img/icon-instagram.png" alt=""></a></li>
+								<li><a href=""><img src="img/icon-twitter.png" alt=""></a></li>
+								<li><a href=""><img src="img/icon-facebook.png" alt=""></a></li>
+							</ul>
+						</div>
+						<div class="row hidden-xs">
+							<p class="footer-text">magnam aliquam quaerat voluptatem. Ut enim</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>	
+	</footer>	
+	<script>
+		$(document).ready(function(){
+			$('.triger01').mouseover(function(){
+				$('.dropdown').slideDown();
+			});
+			$('.dropdown').mouseout(function(){
+				$('.dropdown').slideUp();
+			});
+			$('.burger').click(function(){
+				$('.dropdown-res').slideToggle();
+			});
+		});
+	</script>
+</body>
+</html>
